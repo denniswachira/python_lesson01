@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rooms</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin: 30px auto;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background: #f4f4f4;
+        }
+        .available {
+            color: green;
+            font-weight: bold;
+        }
+        .not-available {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align:center;">Room List</h2>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Capacity</th>
+        <th>Status</th>
+    </tr>
+
+    {% for room in rooms %}
+    <tr>
+        <td>{{ room.id }}</td>
+        <td>{{ room.name }}</td>
+        <td>{{ room.capacity }}</td>
+        <td class="{{ 'available' if room.available else 'not-available' }}">
+            {{ 'Available' if room.available else 'Occupied' }}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
+
